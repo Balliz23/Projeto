@@ -16,8 +16,10 @@ import java.time.temporal.ChronoUnit;
 
 public class Tempo_Vivo extends AppCompatActivity {
     Button btnRetornar;
+    Button btnRegistrar;
     TextView tvTempo_Vivo;
     TextView tvData;
+    AcessoBD acessoBD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +27,15 @@ public class Tempo_Vivo extends AppCompatActivity {
         setContentView(R.layout.activity_tempo_vivo);
         //Conexao dos elementos xml com o código Java
         btnRetornar = findViewById(R.id.btnRetornar);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
         tvTempo_Vivo = findViewById(R.id.tvTempo_Vivo);
         tvData = findViewById(R.id.tvData);
+        acessoBD = new AcessoBD(Tempo_Vivo.this);
 
         //Resgata os valores da tela anterior e os armazenam em novas variaveis
         Bundle extras = getIntent().getExtras();
         String data_nascimento = extras.getString("data");
+        String nome = extras.getString("nome");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");//Função usada para formatar a string em um formato de data desejado
         LocalDate localDate = LocalDate.parse(data_nascimento, formatter); //Formatar a String em formato de date data
         LocalDate todayBrasil = LocalDate.now(ZoneId.of("America/Sao_Paulo"));// Resgata a data real em São Paulo/ América
@@ -49,6 +54,12 @@ public class Tempo_Vivo extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Tempo_Vivo.this, MainActivity.class);
                 startActivity(intent);
+            }
+        });
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

@@ -16,6 +16,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     EditText etData;
+    EditText etNome;
     Button btnProsseguir;
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     
         //Conexao dos elementos xml com o código Java
         etData = findViewById(R.id.etData);
+        etNome = findViewById(R.id.etNome);
         btnProsseguir = findViewById(R.id.btnProsseguir);
 
         etData.setFocusable(false); // Não atrapalhar no processo de seleção da data
@@ -55,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            if(!etData.getText().toString().isEmpty()) { //não prosseguir caso o campo de data estiver vazio
+            if(!etData.getText().toString().isEmpty() && !etNome.getText().toString().isEmpty()) { //não prosseguir caso o campo de data estiver vazio
                 Intent i1 = new Intent(MainActivity.this, Tempo_Vivo.class);
                 i1.putExtra("data", etData.getText().toString());
+                i1.putExtra("nome", etNome.getText().toString());
                 startActivity(i1); //mudar de tela e levar a informação da data para outra tela
             }
             }
