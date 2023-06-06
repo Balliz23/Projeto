@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Projeto"
         tools:targetApi="31">
         <activity
+            android:name=".Registros"
+            android:exported="false" />
+        <activity
             android:name=".Tempo_Vivo"
             android:exported="false" />
         <activity

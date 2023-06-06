@@ -5,21 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 public class Tempo_Vivo extends AppCompatActivity {
     Button btnRetornar;
     Button btnRegistrar;
     TextView tvTempo_Vivo;
     TextView tvData;
-    AcessoBD acessoBD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,6 @@ public class Tempo_Vivo extends AppCompatActivity {
         btnRegistrar = findViewById(R.id.btnRegistrar);
         tvTempo_Vivo = findViewById(R.id.tvTempo_Vivo);
         tvData = findViewById(R.id.tvData);
-        acessoBD = new AcessoBD(Tempo_Vivo.this);
 
         //Resgata os valores da tela anterior e os armazenam em novas variaveis
         Bundle extras = getIntent().getExtras();
@@ -40,6 +41,10 @@ public class Tempo_Vivo extends AppCompatActivity {
         LocalDate localDate = LocalDate.parse(data_nascimento, formatter); //Formatar a String em formato de date data
         LocalDate todayBrasil = LocalDate.now(ZoneId.of("America/Sao_Paulo"));// Resgata a data real em São Paulo/ América
         tvData.setText("Data de nascimento: "+data_nascimento); // Set o texto no tv para a data de nascimento previamente solicitada
+
+        SimpleDateFormat formatter1 = new SimpleDateFormat("dd/M/yyyy");
+        Date date = new Date();
+        String data_acesso = formatter1.format(date);
 
         int anos_gap = Integer.parseInt(String.valueOf(ChronoUnit.YEARS.between(localDate, todayBrasil))); //Função para achar anos entre datas
         int meses_gap = Integer.parseInt(String.valueOf(ChronoUnit.MONTHS.between(localDate, todayBrasil)))%12; //Função para achar meses entre datas, com % eliminando os meses já listados nos anos
@@ -59,7 +64,11 @@ public class Tempo_Vivo extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i1 = new Intent(Tempo_Vivo.this, Registros.class);
+                i1.putExtra("nome", nome);
+                i1.putExtra("data_nascimento", data_nascimento);
+                i1.putExtra("data_acesso", data_acesso);
+                startActivity(i1); //mudar de tela e levar a informação da data para outra tela
             }
         });
     }
