@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AcessoBD extends SQLiteOpenHelper {
-    protected static final String TABELA_USUARIO = "TABELA_USUARIO";
+    protected static final String TABELA_USUARIO = "USUARIO";
     protected static final String USUARIO_ID = "ID";
     protected static final String USUARIO_NOME = "USUARIO_NOME";
     protected static final String DATA_NASCIMENTO = "DATA_NASCIMENTO";
@@ -20,7 +21,8 @@ public class AcessoBD extends SQLiteOpenHelper {
 
 
     public AcessoBD(@Nullable Context context) {
-        super(context, "ClientBD", null, 1);
+        super(context, "ClientBD1", null, 1);
+
     }
     //É chamado na primeira vez que o banco de Dados(BD) é acessado.
     //Usado também para a criação do banco de dados
@@ -29,7 +31,7 @@ public class AcessoBD extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String statement = "CREATE TABLE " + TABELA_USUARIO +
                 " (" + USUARIO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + USUARIO_NOME + " TEXT, " + DATA_NASCIMENTO + "TEXT" + DATA_ACESSO +"TEXT)";
+                + USUARIO_NOME + " TEXT, " + DATA_NASCIMENTO + " TEXT," + DATA_ACESSO +" TEXT)";
 
         //"CREATE TABLE TABELA_USUARIO(USUARIO_ID INTEGER PRIMARY KEY AUTOINCREMENT, USUARIO_NOME TEXT, USUARIO_IDADE INT)";
         db.execSQL(statement);
@@ -43,6 +45,9 @@ public class AcessoBD extends SQLiteOpenHelper {
     }
 
     public boolean adicionarUsuario(Usuario usuario){
+        long inserirSucedido=0;
+
+        try{
         //getWritableDatabase() permite a gravação em um banco de dados
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -53,11 +58,19 @@ public class AcessoBD extends SQLiteOpenHelper {
         contentValues.put(DATA_ACESSO, usuario.getDataAtualBrasil()); //coluna data_acesso e valor
 
         //nullColumnHack é null quando deseja-se adicionar uma linha não nula. Quando intencionalmente deseja inserir uma linha vazia, é necessário informar o valor de uma coluna da tabela usada. No caso da tabela usuário, pode ser nome ou idade.
-        long inserirSucedido = db.insert(TABELA_USUARIO, null, contentValues);
+        inserirSucedido = db.insert(TABELA_USUARIO, null, contentValues);
         db.close();//Sempre fechar o banco de dados após uso.
+
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //-1 indica que nenhuma linha foi inserida na referida tabela
         return inserirSucedido != -1;
+
     }
 
     /**

@@ -33,13 +33,13 @@ public class Usuario {
     protected String getDataNascimento(){
         return dataNascimento;
     }
-    protected void setDataNascimento(){
+    protected void setDataNascimento(String dataNascimento){
         this.dataNascimento = dataNascimento;
     }
     protected String getDataAtualBrasil(){
         return dataAcesso;
     }
-    protected void setDataAtualBrasil(){
+    protected void setDataAtualBrasil(String dataAcesso){
         this.dataAcesso = dataAcesso;
     }
 }
