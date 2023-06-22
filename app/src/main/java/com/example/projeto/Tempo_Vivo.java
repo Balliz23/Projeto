@@ -26,6 +26,7 @@ public class Tempo_Vivo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_tempo_vivo);
         //Conexao dos elementos xml com o código Java
         btnRetornar = findViewById(R.id.btnRetornar);
