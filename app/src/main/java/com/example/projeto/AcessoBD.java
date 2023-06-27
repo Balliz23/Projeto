@@ -106,7 +106,7 @@ public class AcessoBD extends SQLiteOpenHelper {
                     //String dataNascimentoUsuario = cursor.getString(3);
                     //Não há cursor.getBoolean. Precisa converter um int para boolean. Pode ser feito com cast, SE/ENTÃO ou operador ternário
 
-                    Usuario usuario = new Usuario(usuarioNome, dataNascimento, dataAcesso );//Sempre confira a ordem do construtor
+                    Usuario usuario = new Usuario(usuarioCod, usuarioNome, dataNascimento, dataAcesso );//Sempre confira a ordem do construtor
                     listaUsuarios.add(usuario);//Adiciona o objeto usuário a lista.
                 } while (cursor.moveToNext());//Enquanto houver um próximo registro (moveToNext)
             } else {
