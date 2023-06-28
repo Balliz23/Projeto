@@ -6,13 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".Registros">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDeletar"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/monda"
+        android:text="Deletar"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etId"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAlterar"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/monda"
+        android:text="Alterar"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNome1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="160dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/monda"
+        android:text="Data de nascimento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lvUsuarios" />
+
+    <EditText
+        android:id="@+id/etNome1"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="18dp"
+        android:editable="false"
+        android:ems="10"
+        android:fontFamily="@font/monda"
+        android:inputType="textPersonName"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="51dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/monda"
+        android:text="Nome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etData" />
+
+    <EditText
+        android:id="@+id/etId"
+        android:layout_width="65dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="60dp"
+        android:editable="false"
+        android:ems="10"
+        android:fontFamily="@font/monda"
+        android:inputType="textPersonName"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/etData"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="51dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/monda"
+        android:text="Id"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/lvUsuarios" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/allerta_stencil"
         android:text="Registros"
-        android:textSize="34sp"
+        android:textColor="#4A148C"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,21 +113,38 @@
     <ListView
         android:id="@+id/lvUsuarios"
         android:layout_width="412dp"
-        android:layout_height="412dp"
-        android:layout_marginTop="25dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="41dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/monda"
         android:text="Home"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lvUsuarios" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAlterar"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etData"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:ems="10"
+        android:fontFamily="@font/monda"
+        android:hint="Selecione a data"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

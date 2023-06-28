@@ -6,19 +6,17 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     EditText etData;
     EditText etNome;
     Button btnProsseguir;
+    Button btnRegistros;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         etData = findViewById(R.id.etData);
         etNome = findViewById(R.id.etNome);
         btnProsseguir = findViewById(R.id.btnProsseguir);
+        btnRegistros = findViewById(R.id.btnRegistros);
 
         etData.setFocusable(false); // Não atrapalhar no processo de seleção da data
         etData.setKeyListener(null); //Não abrir o teclado quando o campo for selecionado
@@ -65,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
                 i1.putExtra("nome", etNome.getText().toString());
                 startActivity(i1); //mudar de tela e levar a informação da data para outra tela
             }
+            }
+        });
+        btnRegistros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i2 = new Intent(MainActivity.this, Registros.class);
+                startActivity(i2);
             }
         });
     }

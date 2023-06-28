@@ -72,6 +72,32 @@ public class AcessoBD extends SQLiteOpenHelper {
         return inserirSucedido != -1;
 
     }
+    public void deletarUsuario(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String statement = "DELETE FROM " +TABELA_USUARIO+ " WHERE ID = " +id;
+
+        //"CREATE TABLE TABELA_USUARIO(USUARIO_ID INTEGER PRIMARY KEY AUTOINCREMENT, USUARIO_NOME TEXT, USUARIO_IDADE INT)";
+        db.execSQL(statement);
+    }
+    public boolean atualizarUsuario(Usuario usuario) {
+        SQLiteDatabase db = this.getWritableDatabase(); //getWritableDatabase() permite a gravação em um banco de dados
+
+        ContentValues contentValues = new ContentValues();//ContentValues é uma classe que permite armazenar dados agrupados aos pares. Exemplo contentValues.put("nome", value); contentValues.getString("name"). É uma associative array em PHP ou hashmap em outras linguagens.
+        contentValues.put(USUARIO_NOME, usuario.getNomeUsuario());
+        contentValues.put(DATA_NASCIMENTO, usuario.getDataNascimento());
+        //Por quê não tem o ID aqui? Porque o ID é tem incremento automático (AUTOINCREMENT). Veja a linha "CREATE TABLE..." dentro do método onCreate.
+
+        long atualizarSucedido = db.update(TABELA_USUARIO,
+                contentValues,
+                USUARIO_ID + "=" + usuario.getIdUsuario(),
+                null);//nullColumnHack é null quando deseja-se adicionar uma linha não nula. Quando intencionalmente deseja inserir uma linha vazia, é necessário informar o valor de uma coluna da tabela usada. No caso da tabela usuário, pode ser nome ou idade.
+        db.close();//Sempre fechar o banco de dados após uso.
+
+        //-1 indica que nenhuma linha foi inserida na referida tabela
+        return atualizarSucedido != -1;
+
+
+    }
 
     /**
      * Método para retornar a lista de usuarios completa.

@@ -18,8 +18,8 @@ public class Usuario {
         this.dataAcesso = dataAcesso;
     }
     public String toString() {
-        return "Id: " + idUsuario + "      nome: " + nomeUsuario +
-                '\'' + "      dataNascimento: " + dataNascimento + "      dataAcesso: " + dataAcesso;
+        return "Id: " + idUsuario + "      Nome: " + nomeUsuario +
+                "      Data de nascimento: " + dataNascimento + "      Data de acesso: " + dataAcesso;
     }
     protected int getIdUsuario(){
         return idUsuario;
