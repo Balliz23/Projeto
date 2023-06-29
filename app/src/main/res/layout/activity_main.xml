@@ -12,7 +12,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_button"
-        android:fontFamily="@font/monda"
+        android:fontFamily="More Fonts..."
         android:text="Registros"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"

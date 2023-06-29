@@ -125,7 +125,6 @@ public class Registros extends AppCompatActivity {
             Toast.makeText(Registros.this, "Erro na conversão de uma String para int: Idade não corresponde a número!", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(Registros.this, "Erro na criação do usuário!", Toast.LENGTH_LONG).show();
         }
 
         lvUsuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
